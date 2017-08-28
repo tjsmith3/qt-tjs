@@ -59,12 +59,13 @@
 //! [0]
 Window::Window()
 {
-    setWindowTitle(tr("2D Painting on Native and OpenGL Widgets"));
+    setWindowTitle(tr("LED Strip Simulator on Native and OpenGL Widgets"));
 
     Widget *native = new Widget(&helper, this);
-    GLWidget *openGL = new GLWidget(&helper, this);
     QLabel *nativeLabel = new QLabel(tr("Native"));
     nativeLabel->setAlignment(Qt::AlignHCenter);
+
+    GLWidget *openGL = new GLWidget(&helper, this);
     QLabel *openGLLabel = new QLabel(tr("OpenGL"));
     openGLLabel->setAlignment(Qt::AlignHCenter);
 
