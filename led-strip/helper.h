@@ -51,6 +51,8 @@
 #ifndef HELPER_H
 #define HELPER_H
 
+#include "ledstrip.h"
+
 #include <QBrush>
 #include <QFont>
 #include <QPen>
@@ -63,7 +65,7 @@ public:
     Helper();
 
 public:
-    void paint(QPainter *painter, QPaintEvent *event, int elapsed);
+    void paint(QPainter *painter, QPaintEvent *event, int elapsed, Ledstrip *strip);
 
 private:
     QBrush background;

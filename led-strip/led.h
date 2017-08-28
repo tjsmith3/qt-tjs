@@ -2,15 +2,15 @@
 #define LED_H
 
 
-class led
+class Led
 {
 public:
-    led();
-    void setColor(unsigned short r,  unsigned short g,  unsigned short b,  unsigned short z);
-    void getColor(unsigned short *r, unsigned short *g, unsigned short *b, unsigned short *z);
+    Led();
+    void setColor(int r,  int g,  int b,  int a);
+    void getColor(int *pr, int *pg, int *pb, int *pa);
 
 private:
-    unsigned short r,g,b,z;
+    int r,g,b,a;
 };
 
 #endif // LED_H

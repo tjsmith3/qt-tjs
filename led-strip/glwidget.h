@@ -52,6 +52,7 @@
 #define GLWIDGET_H
 
 #include <QOpenGLWidget>
+#include "ledstrip.h"
 
 //! [0]
 class Helper;
@@ -72,6 +73,7 @@ protected:
 private:
     Helper *helper;
     int elapsed;
+    Ledstrip strip;
 };
 //! [0]
 

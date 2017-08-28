@@ -1,26 +1,26 @@
 #include "led.h"
 
-led::led()
+Led::Led()
 {
     r = 0;
     g = 0;
     b = 0;
-    z = 0;
+    a = 255;
 }
 
-void led::setColor(unsigned short newr,  unsigned short newg,  unsigned short newb,  unsigned short newz)
+void Led::setColor(int newr,  int newg,  int newb,  int newa)
 {
     r = newr;
     b = newb;
     g = newg;
-    z = newz;
+    a = newa;
 }
 
-void led::getColor(unsigned short *pr, unsigned short *pg, unsigned short *pb, unsigned short *pz)
+void Led::getColor(int *pr, int *pg, int *pb, int *pa)
 {
     *pr = this->r;
     *pg = this->g;
     *pb = this->b;
-    *pz = this->z;
+    *pa = this->a;
 
 }

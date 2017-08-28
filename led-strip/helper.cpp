@@ -49,6 +49,7 @@
 ****************************************************************************/
 
 #include "helper.h"
+#include "ledstrip.h"
 
 #include <QPainter>
 #include <QPaintEvent>
@@ -71,34 +72,39 @@ Helper::Helper()
 //! [0]
 
 //! [1]
-void Helper::paint(QPainter *painter, QPaintEvent *event, int elapsed)
+void Helper::paint(QPainter *painter, QPaintEvent *event, int elapsed, Ledstrip *strip)
 {
-    painter->fillRect(event->rect(), background);
-    painter->translate(100, 100);
-//! [1]
+    int i, x, y;
+    int r, g, b, a;
+    int size = 15;
 
-//! [2]
+    painter->fillRect(event->rect(), background);
+    painter->translate(0,0);
+
     painter->save();
     painter->setBrush(circleBrush);
     painter->setPen(circlePen);
-    painter->rotate(elapsed * 0.030);
 
-    qreal r = elapsed / 1000.0;
-    int n = 30;
-    for (int i = 0; i < n; ++i) {
-        painter->rotate(30);
-        qreal factor = (i + r) / n;
-        qreal radius = 0 + 120.0 * factor;
-        qreal circleRadius = 1 + factor * 20;
-        painter->drawEllipse(QRectF(radius, -circleRadius,
-                                    circleRadius * 2, circleRadius * 2));
+
+    for (i = 0; i < NUM_LED_PER_STRIP; ++i) {
+        x = i*size;
+        y = 0;
+        strip->getColor(i, &r, &g, &b, &a);
+        painter->setBrush(QColor::fromRgb(r, 0, 0));
+        painter->drawRect(x, 0*size, size, size);
+
+        painter->setBrush(QColor::fromRgb(0, g, 0));
+        painter->drawRect(x, 1*size, size, size);
+
+        painter->setBrush(QColor::fromRgb(0, 0, b));
+        painter->drawRect(x, 2*size, size, size);
+
+        // label the column
+        painter->drawText(x, 3*size, size, size, 0, QString(i));
     }
-    painter->restore();
-//! [2]
 
-//! [3]
-    painter->setPen(textPen);
-    painter->setFont(textFont);
-    painter->drawText(QRect(-50, -50, 100, 100), Qt::AlignCenter, QStringLiteral("Qt"));
+
+    painter->restore();
+
 }
-//! [3]
+

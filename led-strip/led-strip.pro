@@ -4,14 +4,16 @@ HEADERS     = glwidget.h \
               helper.h \
               widget.h \
               window.h \
-              led.h
+              led.h \
+    ledstrip.h
 
 SOURCES     = glwidget.cpp \
               helper.cpp \
               main.cpp \
               widget.cpp \
               window.cpp \
-             led.cpp
+             led.cpp \
+    ledstrip.cpp
 
 # install
 target.path = /home/tjsmith/prj/qt-tjs/led-strip/led-strip
