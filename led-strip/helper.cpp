@@ -77,6 +77,7 @@ void Helper::paint(QPainter *painter, QPaintEvent *event, int elapsed, Ledstrip 
     int i, x, y;
     int r, g, b, a;
     int size = 15;
+    QString str;
 
     painter->fillRect(event->rect(), background);
     painter->translate(0,0);
@@ -99,8 +100,14 @@ void Helper::paint(QPainter *painter, QPaintEvent *event, int elapsed, Ledstrip 
         painter->setBrush(QColor::fromRgb(0, 0, b));
         painter->drawRect(x, 2*size, size, size);
 
+        painter->setBrush(QColor::fromRgb(r, g, b));
+        painter->drawRect(x, 4*size, size, size);
+
         // label the column
-        painter->drawText(x, 3*size, size, size, 0, QString(i));
+        str.setNum(i);
+        painter->setPen(textPen);
+        painter->drawText(x, 5*size, size, size, 0, str);
+        painter->setPen(circlePen);
     }
 
 

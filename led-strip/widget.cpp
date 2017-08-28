@@ -61,6 +61,14 @@ Widget::Widget(Helper *helper, QWidget *parent)
 {
     elapsed = 0;
     setFixedSize(1000, 200);        // TJS:XXX make size based on strip size??
+
+    int i;
+    int numLED = strip.getNumLED();
+    for (i=0; i<numLED; i++)
+    {
+        int step = 255 / numLED;
+        strip.setColor(i, i*step, i*step, i*step, 255);
+    }
 }
 //! [0]
 
@@ -75,9 +83,9 @@ void Widget::animate()
     {
         int r, g, b, a;
         this->strip.getColor(i, &r, &g, &b, &a);
-        r = ++r & 0xFF;
-        g = ++g & 0xFF;
-        b = ++b & 0xFF;
+        r = (r+3) & 0xFF;
+        g = (g+5) & 0xFF;
+        b = (b+7) & 0xFF;
         this->strip.setColor(i, r, g, b, a);
     }
 
