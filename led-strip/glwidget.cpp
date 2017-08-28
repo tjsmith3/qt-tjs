@@ -81,4 +81,3 @@ void GLWidget::paintEvent(QPaintEvent *event)
     helper->paint(&painter, event, elapsed, &strip);
     painter.end();
 }
-//! [2]
