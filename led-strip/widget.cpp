@@ -60,7 +60,7 @@ Widget::Widget(Helper *helper, QWidget *parent)
     : QWidget(parent), helper(helper)
 {
     elapsed = 0;
-    setFixedSize(1000, 200);        // TJS:XXX make size based on strip size??
+    setFixedSize(1000, 100);        // TJS:XXX make size based on strip size??
 
     int i;
     int numLED = strip.getNumLED();

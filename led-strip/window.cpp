@@ -66,7 +66,7 @@ Window::Window()
 
     QGridLayout *layout = new QGridLayout;
     layout->addWidget(native, 0, 0);
-    layout->addWidget(nativeLabel, 1, 0);
+//    layout->addWidget(nativeLabel, 1, 0);
     setLayout(layout);
 
     QTimer *timer = new QTimer(this);
